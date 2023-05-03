@@ -58,4 +58,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    // Relationship
+    public function senarais()
+    {
+        return $this->hasMany(Senarai::class);
+    }
 }
