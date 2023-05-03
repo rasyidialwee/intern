@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Senarai;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,8 +21,19 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
         $this->call([
             SenaraiSeeder::class
         ]);
+
+        // User::factory(10)
+        //     ->has(Senarai::factory(10))
+        //     ->create();
+
+        //this is magic method
+        //refer to https://laravel.com/docs/10.x/eloquent-factories#belongs-to-relationships
+        // User::factory(10)
+        //     ->hasSenarais(10)
+        //     ->create();
     }
 }
