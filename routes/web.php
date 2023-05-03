@@ -36,4 +36,5 @@ Route::middleware([
 
     //Senarai Routing
     Route::get('/senarais', [SenaraiController::class, 'index'])->name('senarais.index');
+    Route::delete('/senarais/{senarai}', [SenaraiController::class, 'destroy'])->name('senarais.delete');
 });

@@ -73,6 +73,8 @@ class SenaraiController extends Controller
      */
     public function destroy(Senarai $senarai)
     {
-        //
+        $senarai->delete();
+
+        return back();
     }
 }

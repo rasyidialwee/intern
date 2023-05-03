@@ -1,9 +1,14 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
+import { router } from "@inertiajs/vue3";
 
 defineProps({
     senarais: Array,
 });
+
+function padam(senarai) {
+    router.delete(route("senarais.delete", senarai));
+}
 </script>
 
 <template>
@@ -21,6 +26,7 @@ defineProps({
                     <ul>
                         <li v-for="(senarai, index) in senarais" :key="index">
                             {{ senarai.name }}
+                            <button @click="padam(senarai)">Delete</button>
                         </li>
                     </ul>
                 </div>
