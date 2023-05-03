@@ -13,7 +13,19 @@ class SenaraiController extends Controller
      */
     public function index()
     {
-        return inertia('Senarai/Index');
+        // $user = auth()->user();
+
+        // $senarais = $user->senarais;
+
+        // return inertia('Senarai/Index', [
+        //     'senarais' => $senarais
+        // ]);
+
+
+        //ini adalah shortcode
+        return inertia('Senarai/Index', [
+            'senarais' => auth()->user()->senarais
+        ]);
     }
 
     /**

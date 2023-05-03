@@ -1,6 +1,9 @@
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Welcome from "@/Components/Welcome.vue";
+
+defineProps({
+    senarais: Array,
+});
 </script>
 
 <template>
@@ -14,7 +17,11 @@ import Welcome from "@/Components/Welcome.vue";
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    Hi Saya Iqbal
+                    <ul>
+                        <li v-for="(senarai, index) in senarais" :key="index">
+                            {{ senarai.name }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
