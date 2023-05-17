@@ -33,7 +33,7 @@ class SenaraiController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Senarai/Form');
     }
 
     /**
@@ -41,7 +41,15 @@ class SenaraiController extends Controller
      */
     public function store(StoreSenaraiRequest $request)
     {
-        //
+        // dd($request->all());
+        $senarai = new Senarai();
+        $senarai->name = $request->name;
+        $senarai->description = $request->description;
+        // $senarai->user_id = auth()->user()->id;
+        $senarai->user()->associate(auth()->user());
+        $senarai->save();
+
+        return to_route('senarais.index');
     }
 
     /**

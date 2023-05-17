@@ -11,7 +11,7 @@ class StoreSenaraiRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class StoreSenaraiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|min:3',
+            'description' => 'required|string|min:10',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'A title is required',
+            'name.min' => 'Aufa cakap nak nama panjang-panjang. Nama 4 huruf tak cukup',
+            'description.required' => 'A message is required',
         ];
     }
 }
