@@ -2,10 +2,23 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { useForm } from "@inertiajs/vue3";
 
-const form = useForm({
-    name: null,
-    description: null,
+const props = defineProps({
+    senarai: {
+        type: Object,
+        default: null,
+    },
 });
+
+const form = useForm({
+    name: props.senarai ? props.senarai.name : null,
+    description: props.senarai ? props.senarai.description : null,
+});
+
+function submit() {
+    props.senarai
+        ? form.put("/senarais/" + props.senarai.id)
+        : form.post("/senarais");
+}
 </script>
 
 <template>
@@ -19,7 +32,7 @@ const form = useForm({
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <form @submit.prevent="form.post('/senarais')">
+                    <form>
                         <!-- name -->
                         <input type="text" v-model="form.name" />
                         <div v-if="form.errors.name">
@@ -32,8 +45,8 @@ const form = useForm({
                         </div>
 
                         <!-- submit -->
-                        <button type="submit" :disabled="form.processing">
-                            Create
+                        <button @click="submit()" :disabled="form.processing">
+                            {{ senarai ? "Update" : "Create" }}
                         </button>
                     </form>
                 </div>

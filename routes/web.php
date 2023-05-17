@@ -39,4 +39,6 @@ Route::middleware([
     Route::delete('/senarais/{senarai}', [SenaraiController::class, 'destroy'])->name('senarais.delete');
     Route::get('/senarais/create', [SenaraiController::class, 'create'])->name('senarais.create');
     Route::post('/senarais', [SenaraiController::class, 'store'])->name('senarais.store');
+    Route::get('/senarais/{senarai}/edit', [SenaraiController::class, 'edit'])->name('senarais.edit');
+    Route::put('/senarais/{senarai}', [SenaraiController::class, 'update'])->name('senarais.update');
 });

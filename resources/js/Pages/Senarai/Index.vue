@@ -26,6 +26,7 @@ function padam(senarai) {
                     <ul>
                         <li v-for="(senarai, index) in senarais" :key="index">
                             {{ senarai.name }}
+                            <a :href="route('senarais.edit', senarai)">Edit</a>
                             <button @click="padam(senarai)">Delete</button>
                         </li>
                     </ul>
